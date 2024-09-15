@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-
 import mongoose from 'mongoose';
 
 const MONGODB_URI: string = process.env.MONGODB_URI || 'your_mongodb_connection_string';
