@@ -1,5 +1,5 @@
 /** @type {import('next').NextConfig} */
-require('dotenv').config(); // eslint-disable-line
+import 'dotenv/config';
 
 const nextConfig = {
     env: {
