@@ -1,11 +1,40 @@
-import http from 'k6/http';
-import { check, sleep } from 'k6';
+# How To Use
 
-export const options = {
-    vus: 100,
-    duration: '60s'
-};
+## Dependencies Preview
+### System
+- Nginx
+- Node.js
+- MongoDB
 
+### Software
+- Next.js
+- cAdvisor - docker status gathering tool
+- Prometheus - log integration
+- Grafana - log visualization
+- Grafana K6 - Stress test
+
+## Installation
+You have to install Docker for the project operations.
+The requirements list below:
+- For Windows
+    - Docker Desktop
+    - WSL
+- For UNIX
+    - Docker
+
+### Start The Project
+```bash
+docker compose up --build -d
+```
+
+### Stress Test
+```bash
+cat ./k6/script.js | docker run --rm -i --network host grafana/k6 run -
+```
+
+### Update Test Script
+You can append the test script from `k6/scripts.js`
+```js
 export default function () {
     const loginRes = http.post('http://localhost/api/auth/login', JSON.stringify({
         username: 'root',
@@ -60,3 +89,4 @@ export default function () {
 
     sleep(1);
 }
+```
