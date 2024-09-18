@@ -22,13 +22,17 @@ The requirements list below:
 - For UNIX
     - Docker
 
+### Set System Environments
+Copy the `.env.example` and rename it as `.env`
+
 ### Start The Project
 ```bash
 docker compose up --build -d
 ```
 
 ### Access The Service
-Once all dependent container are started, you may access the service by [http://localhost](http://localhost)
+Once all dependent container are started, you may access the service by [http://localhost](http://localhost) <br>
+If you are using `Postman v2.1^` to proceed the test, you may use the [configuration](./postman/Next.js.postman_collection.json) to import the APIs at once.
 |Method|API|Payload|Header|
 |---|---|---|---|
 |GET|{{base_url}}/orders|{}|{}|
