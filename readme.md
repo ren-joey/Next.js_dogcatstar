@@ -27,12 +27,28 @@ The requirements list below:
 docker compose up --build -d
 ```
 
+### Access The Service
+Once all dependent container are started, you may access the service by [http://localhost](http://localhost)
+|Method|API|Payload|Header|
+|---|---|---|---|
+|GET|{{base_url}}/orders|{}|{}|
+|POST|{{base_url}}/orders/create|{"name": "test", "price": 1000}|{"Authorization" : "Bearer <JWT_TOKEN>"}|
+|PUT|{{base_url}}/orders/update|{"orderId": "66e725481052fd75723c077f", "name": "test2"}|{"Authorization" : "Bearer <JWT_TOKEN>"}|
+|DEL|{{base_url}}/orders/delete|{"orderId": "66e8541650c76f3b8027473f"}|{"Authorization" : "Bearer <JWT_TOKEN>"}|
+|POST|{{base_url}}/auth/signup|{"username": "root", "password": "123456789"}|{}|
+|GET|{{base_url}}/auth/login|{"username": "root", "password": "123456789"}|{}|
+
 ### Stress Test
 ```bash
 cat ./k6/script.js | docker run --rm -i --network host grafana/k6 run -
 ```
 
-### Update Test Script
+### Stop and Remove The Container
+```bash
+docker compose down -v
+```
+
+### Append Your Test Script (optional)
 You can append the test script from `k6/scripts.js`
 ```js
 export default function () {
